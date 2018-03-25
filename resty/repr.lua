@@ -1,7 +1,7 @@
 local table_sort = table.sort
 local tostring = tostring
 
-local version = '1.0'
+local version = '1.01'
 
 local  _LICENSE = [[
 MIT LICENSE
@@ -80,25 +80,10 @@ local function getSequenceLength(t)
   return len - 1
 end
 
-local function getNonSequentialKeys(t)
-  local keys, keysLength = {}, 0
-  local sequenceLength = getSequenceLength(t)
-  for k,_ in rawpairs(t) do
-    if not isSequenceKey(k, sequenceLength) then
-      keysLength = keysLength + 1
-      keys[keysLength] = k
-    end
-  end
-  table.sort(keys, sortKeys)
-  return keys, keysLength, sequenceLength
-end
-
 local defaultTypeOrders = {
   ['number']   = 1, ['boolean']  = 2, ['string'] = 3, ['table'] = 4,
   ['function'] = 5, ['userdata'] = 6, ['thread'] = 7
 }
-
-local numberOrBoolean = {number = 1,boolean = 2}
 
 local function sortKeys(a, b)
   local ta, tb = type(a), type(b)
@@ -116,6 +101,21 @@ local function sortKeys(a, b)
   -- custom types are sorted out alphabetically
   return ta < tb
 end
+
+local function getNonSequentialKeys(t)
+  local keys, keysLength = {}, 0
+  local sequenceLength = getSequenceLength(t)
+  for k,_ in rawpairs(t) do
+    if not isSequenceKey(k, sequenceLength) then
+      keysLength = keysLength + 1
+      keys[keysLength] = k
+    end
+  end
+  table.sort(keys, sortKeys)
+  return keys, keysLength, sequenceLength
+end
+
+local numberOrBoolean = {number = 1,boolean = 2}
 
 local function isArray(t)
     local n = getSequenceLength(t)
