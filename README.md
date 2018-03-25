@@ -374,7 +374,7 @@ sample out put of an instance of [lua-resty-model](https://github.com/xiangnansc
   name              : "guys",
   render            : "function: 0x404c61c0",
   table_name        : "user",
-  sex                : "function: 0x404c6740",
+  sex               : "function: 0x404c6740",
 }
 ```
 sample out put of [resty.sql.postgresql](https://github.com/xiangnanscu/lua-resty-sql/blob/master/resty/sql/postgresql.lua)
