@@ -1,4 +1,4 @@
-# lua-resty-validator
+# lua-resty-repr
 Convert a lua table whose key or value could be a function, userdata, thread or circular reference to a human readable and js syntax compatible string.
 
 # Requirements
@@ -13,7 +13,7 @@ local res = repr(t) -- use the default settings
 res = repr:new{indent=4, max_depth=3}(t)  -- custom
 
 ```
-sample out put of an instance of [resty.model](https://github.com/xiangnanscu/lua-resty-model)
+sample out put of an instance of [lua-resty-model](https://github.com/xiangnanscu/lua-resty-model)
 ```js
 {
   /*41570c18*/
